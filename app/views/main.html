@@ -2,4 +2,26 @@
   <h3 class="text-muted">Let's Get Drinks!</h3>
 </div>
 
-<select ng-model="MyNeighborhood" ng-options="neighborhood as neighborhood.name for neighborhood in neighborhoods"></select>
+<select ng-model="myNeighborhood" ng-options="neighborhood as neighborhood.name for neighborhood in neighborhoods" ng-change="getResults(myNeighborhood)"></select>
+
+<div ng-model="testResponse" ng-repeat="response in testResponse">
+    <h3>{{response.name}}</h3>
+
+    <img src="{{response.rating_img_url}}" alt="">
+    <small>{{response.rating}} Stars</small>
+
+    <br>
+    <br>
+
+    <div>
+        <span ng-repeat="category in response.categories">
+            {{category[0]}} {{$last ? '' : ', '}}
+        </span>
+    </div>
+
+    <p>{{response.snippet_text}}</p>
+
+    <a href="{{response.mobile_url}}">View on yelp</a>
+    <hr>
+</div>
+
